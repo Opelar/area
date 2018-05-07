@@ -77,13 +77,15 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({4:[function(require,module,exports) {
-var array = window._area;
+})({3:[function(require,module,exports) {
+var areaArray = window._area;
 
+// get id
 var $ = function $(selector) {
   return document.getElementById(selector);
 };
 
+// create options
 var createDOM = function createDOM(opt, tag) {
   var dom = document.createElement(tag);
   dom.innerHTML = opt.name;
@@ -91,25 +93,29 @@ var createDOM = function createDOM(opt, tag) {
   return dom;
 };
 
+// 存储所有省市区数据
 var province = [];
 var city = [];
 var county = [];
 
-array.map(function (item, index) {
+areaArray.map(function (item, index) {
   item.type === "0" && item.p_code === "100000" && province.push(item);
   item.type === "1" && city.push(item);
   item.type === "2" && county.push(item);
 });
 
+// select dom
 var $province = $("province");
 var $city = $("city");
 var $county = $("county");
 
+// init add province
 province.map(function (item, index) {
   var option = createDOM(item, "option");
   $province.appendChild(option);
 });
 
+// province change
 $province.addEventListener("change", function (e) {
   var val = e.target.value;
   $city.innerHTML = "";
@@ -144,35 +150,68 @@ $province.addEventListener("change", function (e) {
   _city.map(function (i, idx) {
     var option = createDOM(i, "option");
     $city.appendChild(option);
+
+    if (idx === 0) {
+      var code = i.code;
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = county[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          j = _step2.value;
+
+          if (code === j.p_code) {
+            var opt = createDOM(j, "option");
+            $county.appendChild(opt);
+          }
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
   });
 }, false);
 
+// city change
 $city.addEventListener("change", function (e) {
   var val = e.target.value;
   var _county = [];
   $county.innerHTML = "";
 
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
 
   try {
-    for (var _iterator2 = county[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var item = _step2.value;
+    for (var _iterator3 = county[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var item = _step3.value;
 
       item.p_code === val && _county.push(item);
     }
   } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return) {
-        _iterator2.return();
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
       }
     } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
+      if (_didIteratorError3) {
+        throw _iteratorError3;
       }
     }
   }
@@ -182,7 +221,15 @@ $city.addEventListener("change", function (e) {
     $county.appendChild(option);
   });
 }, false);
-},{}],7:[function(require,module,exports) {
+
+// 获取选择的数据
+$("btn").addEventListener("click", function (e) {
+  var province = $province.value;
+  var city = $city.value;
+  var county = $county.value;
+  $("result").innerHTML = province + " " + city + " " + county;
+}, false);
+},{}],19:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -212,7 +259,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '41497' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '40907' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -351,5 +398,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[7,4])
+},{}]},{},[19,3])
 //# sourceMappingURL=/js.4a0047a8.map

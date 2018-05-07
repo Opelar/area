@@ -1,7 +1,9 @@
-const array = window._area;
+const areaArray = window._area;
 
+// get id
 const $ = selector => document.getElementById(selector);
 
+// create options
 const createDOM = (opt, tag) => {
   const dom = document.createElement(tag);
   dom.innerHTML = opt.name;
@@ -9,25 +11,29 @@ const createDOM = (opt, tag) => {
   return dom;
 };
 
+// 存储所有省市区数据
 let province = [];
 let city = [];
 let county = [];
 
-array.map((item, index) => {
+areaArray.map((item, index) => {
   item.type === "0" && item.p_code === "100000" && province.push(item);
   item.type === "1" && city.push(item);
   item.type === "2" && county.push(item);
 });
 
+// select dom
 const $province = $("province");
 const $city = $("city");
 const $county = $("county");
 
+// init add province
 province.map((item, index) => {
   let option = createDOM(item, "option");
   $province.appendChild(option);
 });
 
+// province change
 $province.addEventListener(
   "change",
   function(e) {
@@ -43,11 +49,24 @@ $province.addEventListener(
     _city.map((i, idx) => {
       let option = createDOM(i, "option");
       $city.appendChild(option);
+
+      if (idx === 0) {
+        let code = i.code;
+
+        for (j of county) {
+          if (code === j.p_code) {
+            let opt = createDOM(j, "option");
+            $county.appendChild(opt);
+          }
+        }
+      }
+
     });
   },
   false
 );
 
+// city change
 $city.addEventListener(
   "change",
   function(e) {
@@ -66,3 +85,12 @@ $city.addEventListener(
   },
   false
 );
+
+
+// 获取选择的数据
+$("btn").addEventListener("click", function(e) {
+  let province = $province.value;
+  let city = $city.value;
+  let county = $county.value;
+  $("result").innerHTML = province + " " + city + " " + county;
+}, false)

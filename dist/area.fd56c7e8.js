@@ -77,7 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({17:[function(require,module,exports) {
 window._area = [{ "code": "110000", "p_code": "100000", "name": "北京市", "type": "0" }, {
   "code": "110100",
   "p_code": "110000",
@@ -8874,7 +8874,7 @@ window._area = [{ "code": "110000", "p_code": "100000", "name": "北京市", "ty
   "name": "澳门特别行政区",
   "type": "0"
 }];
-},{}],7:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -8904,7 +8904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '41497' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '40907' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -9043,5 +9043,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[7,3])
+},{}]},{},[18,17])
 //# sourceMappingURL=/area.fd56c7e8.map
