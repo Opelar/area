@@ -77,7 +77,7 @@ parcelRequire = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({4:[function(require,module,exports) {
 var areaArray = window._area;
 
 // get id
@@ -90,6 +90,10 @@ var createDOM = function createDOM(opt, tag) {
   var dom = document.createElement(tag);
   dom.innerHTML = opt.name;
   dom.value = opt.code;
+  dom.setAttribute("data-type", opt.type);
+  dom.setAttribute("data-code", opt.code);
+  dom.setAttribute("data-name", opt.name);
+
   return dom;
 };
 
@@ -148,8 +152,8 @@ $province.addEventListener("change", function (e) {
   }
 
   _city.map(function (i, idx) {
-    var option = createDOM(i, "option");
-    $city.appendChild(option);
+    var optionDOM = createDOM(i, "option");
+    $city.appendChild(optionDOM);
 
     if (idx === 0) {
       var code = i.code;
@@ -163,8 +167,8 @@ $province.addEventListener("change", function (e) {
           j = _step2.value;
 
           if (code === j.p_code) {
-            var opt = createDOM(j, "option");
-            $county.appendChild(opt);
+            var optDOM = createDOM(j, "option");
+            $county.appendChild(optDOM);
           }
         }
       } catch (err) {
@@ -217,8 +221,8 @@ $city.addEventListener("change", function (e) {
   }
 
   _county.map(function (i, idx) {
-    var option = createDOM(i, "option");
-    $county.appendChild(option);
+    var optionDOM = createDOM(i, "option");
+    $county.appendChild(optionDOM);
   });
 }, false);
 
@@ -229,7 +233,7 @@ $("btn").addEventListener("click", function (e) {
   var county = $county.value;
   $("result").innerHTML = province + " " + city + " " + county;
 }, false);
-},{}],19:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -259,7 +263,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '40907' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '43761' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -398,5 +402,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[19,3])
+},{}]},{},[14,4])
 //# sourceMappingURL=/js.4a0047a8.map
