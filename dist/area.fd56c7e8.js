@@ -8874,7 +8874,7 @@ window._area = [{ "code": "110000", "p_code": "100000", "name": "北京市", "ty
   "name": "澳门特别行政区",
   "type": "0"
 }];
-},{}],8:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
 
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -8904,7 +8904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '43761' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '41345' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -9043,5 +9043,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[8,3])
+},{}]},{},[7,3])
 //# sourceMappingURL=/area.fd56c7e8.map
