@@ -20,7 +20,7 @@ let province = [];
 let city = [];
 let county = [];
 
-areaArray.map((item, index) => {
+areaArray.forEach((item, index) => {
   item.type === "0" && item.p_code === "100000" && province.push(item);
   item.type === "1" && city.push(item);
   item.type === "2" && county.push(item);
@@ -32,7 +32,7 @@ const $city = $("city");
 const $county = $("county");
 
 // init add province
-province.map((item, index) => {
+province.forEach((item, index) => {
   let option = createDOM(item, "option");
   $province.appendChild(option);
 });
@@ -50,7 +50,7 @@ $province.addEventListener(
       item.p_code === val && _city.push(item);
     }
 
-    _city.map((i, idx) => {
+    _city.forEach((i, idx) => {
       let optionDOM = createDOM(i, "option");
       $city.appendChild(optionDOM);
 
@@ -81,7 +81,7 @@ $city.addEventListener(
       item.p_code === val && _county.push(item);
     }
 
-    _county.map((i, idx) => {
+    _county.forEach((i, idx) => {
       let optionDOM = createDOM(i, "option");
       $county.appendChild(optionDOM);
     });
