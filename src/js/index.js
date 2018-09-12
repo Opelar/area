@@ -4,14 +4,13 @@ const areaArray = window._area;
 const $ = selector => document.getElementById(selector);
 
 // create options
-const createDOM = (opt, tag) => {
+const createOption = (opt, tag) => {
   const dom = document.createElement(tag);
   dom.innerHTML = opt.name;
   dom.value = opt.code;
   dom.setAttribute("data-type", opt.type);
   dom.setAttribute("data-code", opt.code);
   dom.setAttribute("data-name", opt.name);
-
   return dom;
 };
 
@@ -51,15 +50,15 @@ $province.addEventListener(
     }
 
     _city.forEach((i, idx) => {
-      let optionDOM = createDOM(i, "option");
+      let optionDOM = createOption(i, "option");
       $city.appendChild(optionDOM);
 
       if (idx === 0) {
         let code = i.code;
 
-        for (j of county) {
+        for (const j of county) {
           if (code === j.p_code) {
-            let optDOM = createDOM(j, "option");
+            let optDOM = createOption(j, "option");
             $county.appendChild(optDOM);
           }
         }
