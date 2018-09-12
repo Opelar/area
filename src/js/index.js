@@ -81,7 +81,7 @@ $city.addEventListener(
     }
 
     _county.forEach((i, idx) => {
-      let optionDOM = createDOM(i, "option");
+      let optionDOM = createOption(i, "option");
       $county.appendChild(optionDOM);
     });
   },
